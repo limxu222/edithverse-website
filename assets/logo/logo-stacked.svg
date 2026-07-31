@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 68" width="128" height="68" role="img" aria-label="edithverse">
+  <!-- Stacked lockup. Hero, business card, proposal cover. Minimum width 88px.
+       Clear space on all sides = 16 units (half the mark's width). -->
+  <mask id="evBandsS">
+    <rect x="48" y="0" width="32" height="32" fill="#000"/>
+    <g fill="#fff">
+      <rect x="48" y="0"     width="32" height="3.39"/>
+      <rect x="48" y="4.77"  width="32" height="3.39"/>
+      <rect x="48" y="9.54"  width="32" height="3.39"/>
+      <rect x="48" y="14.30" width="32" height="3.39"/>
+      <rect x="48" y="19.07" width="32" height="3.39"/>
+      <rect x="48" y="23.84" width="32" height="3.39"/>
+      <rect x="48" y="28.61" width="32" height="3.39"/>
+    </g>
+  </mask>
+  <circle cx="64" cy="16" r="16" fill="currentColor" mask="url(#evBandsS)"/>
+  <text x="64" y="60" text-anchor="middle"
+        font-family="Inter, Geist, Satoshi, ui-sans-serif, system-ui, sans-serif"
+        font-size="12.5" font-weight="500" letter-spacing="1.25"
+        fill="currentColor">EDITHVERSE</text>
+</svg>

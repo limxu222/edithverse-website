@@ -1,0 +1,607 @@
+/* =====================================================================
+   edithverse
+   Tokens taken verbatim from the edithverse brand guidelines (clay), section 5.
+   Do not invent colours; change them in the guidelines first.
+   ===================================================================== */
+:root {
+  color-scheme: dark;
+
+  --ev-bg: #0F0E0D;
+  --ev-surface: #171512;
+  --ev-surface-2: #1F1C18;
+  --ev-border: #2A2621;
+  --ev-border-strong: #3B352C;
+  --ev-text: #F2ECE4;
+  --ev-text-muted: #9A9086;
+  --ev-text-faint: #6B635A;
+  --ev-accent: #B34E30;
+  --ev-accent-hover: #BE5535;
+  --ev-accent-text: #E07A57;
+  --ev-accent-quiet: #2A1710;
+  --ev-accent-line: #4A2317;
+  --ev-on-accent: #FFFFFF;
+  --ev-success: #6FBE80;
+  --ev-success-bg: #16251A;
+  --ev-danger: #EC5F6E;
+  --ev-danger-bg: #2A1419;
+
+  --ev-radius-control: 8px;
+  --ev-radius-card: 12px;
+  --ev-radius-pill: 999px;
+
+  --ev-space-1: 0.25rem;
+  --ev-space-2: 0.5rem;
+  --ev-space-3: 0.75rem;
+  --ev-space-4: 1rem;
+  --ev-space-6: 1.5rem;
+  --ev-space-8: 2rem;
+  --ev-space-12: 3rem;
+  --ev-space-20: 5rem;
+  --ev-space-32: 8rem;
+
+  --ev-dur: 150ms;
+  --ev-ease: cubic-bezier(0.2, 0, 0, 1);
+
+  --ev-font: Inter, Geist, Satoshi, ui-sans-serif, system-ui, sans-serif;
+  --ev-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --ev-bg: #F7F3EC;
+  --ev-surface: #FFFFFF;
+  --ev-surface-2: #EFE9DF;
+  --ev-border: #DED5C6;
+  --ev-border-strong: #C7BBA8;
+  --ev-text: #16130F;
+  --ev-text-muted: #6B635A;
+  --ev-text-faint: #8C8377;
+  --ev-accent: #A8402A;
+  --ev-accent-hover: #8E3421;
+  --ev-accent-text: #9A3A25;
+  --ev-accent-quiet: #F6E4DD;
+  --ev-accent-line: #E0B9AA;
+  --ev-on-accent: #FFFFFF;
+  --ev-success: #3D7A4C;
+  --ev-success-bg: #E4F0E6;
+  --ev-danger: #B32B41;
+  --ev-danger-bg: #FAE4E8;
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background-color: var(--ev-bg);
+  color: var(--ev-text);
+  font-family: var(--ev-font);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: 500; margin: 0; line-height: 1.25; }
+p, ul, dl, dd, figure, blockquote { margin: 0; }
+ul { padding: 0; list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; cursor: pointer; }
+
+/* Guideline 12: visible keyboard focus on every interactive element. */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ev-bg), 0 0 0 4px var(--ev-accent-text);
+  border-radius: var(--ev-radius-control);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: var(--ev-space-2);
+  padding: var(--ev-space-2) var(--ev-space-4);
+  background-color: var(--ev-surface);
+  border: 0.5px solid var(--ev-border-strong);
+  border-radius: var(--ev-radius-control);
+  z-index: 100;
+}
+.skip-link:focus { left: var(--ev-space-4); }
+
+/* ---------- layout ---------- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--ev-space-6);
+}
+@media (max-width: 380px) { .container { padding-inline: var(--ev-space-4); } }
+
+/* =====================================================================
+   TYPE SCALE — guideline section 9
+   ===================================================================== */
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ev-text-muted);
+}
+.eyebrow-accent { color: var(--ev-accent-text); }
+
+.section-title {
+  margin-top: var(--ev-space-3);
+  font-size: 1.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.section-lead {
+  margin-top: var(--ev-space-4);
+  max-width: 58ch;
+  font-size: 1.25rem;
+  color: var(--ev-text-muted);
+}
+
+/* =====================================================================
+   BUTTONS — guideline section 10
+   Hover transitions colour only. No lift, no scale, no shadow.
+   ===================================================================== */
+.btn {
+  display: inline-block;
+  padding: 11px 22px;
+  border: 0.5px solid transparent;
+  border-radius: var(--ev-radius-control);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: background-color var(--ev-dur) var(--ev-ease),
+              border-color var(--ev-dur) var(--ev-ease),
+              color var(--ev-dur) var(--ev-ease);
+}
+.btn-primary {
+  background-color: var(--ev-accent);
+  color: var(--ev-on-accent);
+}
+.btn-primary:hover { background-color: var(--ev-accent-hover); }
+
+.btn-secondary {
+  border-color: var(--ev-border-strong);
+  color: var(--ev-text);
+}
+.btn-secondary:hover { border-color: var(--ev-text-muted); }
+
+/* =====================================================================
+   HEADER
+   ===================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--ev-bg);
+  border-bottom: 0.5px solid var(--ev-border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ev-space-4);
+  min-height: 68px;
+}
+
+/* Logo: mark is --ev-text, never clay, never gradient (guideline 8). */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  color: var(--ev-text);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.brand-mark { display: block; width: 1.5em; height: 1.5em; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.brand-word { line-height: 1; }
+
+.site-nav { display: flex; align-items: center; gap: var(--ev-space-6); }
+.site-nav > a:not(.btn) {
+  display: none;
+  font-size: 0.875rem;
+  color: var(--ev-text-muted);
+  transition: color var(--ev-dur) var(--ev-ease);
+}
+.site-nav > a:not(.btn):hover,
+.site-nav > a.is-active { color: var(--ev-text); }
+
+@media (min-width: 720px) { .site-nav > a:not(.btn) { display: inline; } }
+
+/* =====================================================================
+   HERO
+   No decorative background. The accent is 5% of the page; everything
+   else is background, text, and hairlines (guideline 7).
+   ===================================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* Own stacking context, so the artwork and the copy can never be reordered
+     by anything outside the hero. */
+  isolation: isolate;
+  padding-block: var(--ev-space-20);
+}
+@media (min-width: 720px) { .hero { padding-block: var(--ev-space-32) var(--ev-space-20); } }
+
+/* ---------------------------------------------------------------------
+   Floating paths background.
+   Vanilla port of the React/motion `FloatingPathsBackground` component
+   (kept verbatim at reference/floating-paths.tsx). Same 36 bezier paths,
+   same formula, position = -1. motion's pathLength/pathOffset become
+   stroke-dasharray/stroke-dashoffset, which needs pathLength="1" on each
+   path so the dash units are normalised 0..1.
+   --------------------------------------------------------------------- */
+.hero-paths {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* stroke-dashoffset is a paint animation, not a composited one, so this
+     element repaints every frame. `contain` walls those repaints inside this
+     box so they cannot invalidate, or fail to invalidate, the copy on top. */
+  contain: layout paint style;
+}
+.hero-paths svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Component hardcodes rgba(15,23,42) slate, which is invisible on
+     --ev-bg. The brand text colour is the only value that reads here. */
+  color: var(--ev-text);
+}
+.hero-paths path {
+  fill: none;
+  stroke: currentColor;
+  stroke-dasharray: 0.35 0.65;
+  animation: ev-path-flow var(--dur, 24s) linear var(--delay, 0s) infinite;
+}
+/* Only stroke-dashoffset animates. The component also pulsed opacity on every
+   path; dropping that halves the per-frame paint work for 36 paths and removes
+   any layer-promotion pressure. Depth still varies via the per-path
+   stroke-opacity baked into the markup. */
+@keyframes ev-path-flow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -2; }
+}
+
+/* Hero content sits above the artwork, on its own compositing layer.
+   Without the transform the copy shares a paint layer with the animating SVG
+   below it, and some GPUs/browsers then fail to repaint the text at all: it
+   vanishes until an unrelated invalidation (a click, a scroll) forces a
+   redraw. Promoting it makes the copy independent of the artwork's repaints. */
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Two columns from the tablet breakpoint up. Guideline 9 caps headlines at
+   22ch and body at 68ch, so on a wide screen a single left column leaves the
+   right half empty and the page reads like a stretched phone layout. The
+   proof panel fills that space without touching the line-length rules. */
+.hero-grid {
+  display: grid;
+  gap: var(--ev-space-12);
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    gap: var(--ev-space-20);
+  }
+}
+
+.hero-title {
+  margin-top: var(--ev-space-4);
+  /* Guideline scale caps the hero at 2.5rem; clamp keeps 320px usable. */
+  font-size: clamp(1.75rem, 7vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+.hero-lead {
+  margin-top: var(--ev-space-6);
+  max-width: 58ch;
+  font-size: 1.25rem;
+  color: var(--ev-text-muted);
+}
+.hero-cta { margin-top: var(--ev-space-8); }
+
+.hero-panel {
+  padding: var(--ev-space-8);
+  background-color: var(--ev-surface);
+  border: 0.5px solid var(--ev-border);
+  border-radius: var(--ev-radius-card);
+}
+.hero-panel-note {
+  margin-top: var(--ev-space-6);
+  padding-top: var(--ev-space-6);
+  border-top: 0.5px solid var(--ev-border);
+  font-size: 0.875rem;
+  color: var(--ev-text-muted);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ev-space-8);
+}
+.stat { display: flex; flex-direction: column-reverse; gap: var(--ev-space-1); }
+.stat-value {
+  margin: 0;
+  font-family: var(--ev-mono);
+  font-size: 1.8125rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+/* Guideline 7 allows one highlighted number, but the hero already spends its
+   three on the eyebrow, the CTA, and the next section's eyebrow scrolling in.
+   Add .stat-value-accent to a single number only if one of those goes away. */
+.stat-value-accent { color: var(--ev-accent-text); }
+.stat-label {
+  font-size: 0.8125rem;
+  color: var(--ev-text-muted);
+}
+
+/* =====================================================================
+   SECTIONS
+   ===================================================================== */
+.section { padding-block: var(--ev-space-20); }
+.section-alt { background-color: var(--ev-surface); border-block: 0.5px solid var(--ev-border); }
+
+/* =====================================================================
+   CARDS — guideline section 10
+   No shadows anywhere in dark mode. Depth comes from surface lightness.
+   ===================================================================== */
+.cards {
+  display: grid;
+  gap: var(--ev-space-6);
+  margin-top: var(--ev-space-12);
+  align-items: start;
+}
+@media (min-width: 900px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+
+.card {
+  height: 100%;
+  padding: var(--ev-space-8);
+  background-color: var(--ev-surface);
+  border: 0.5px solid var(--ev-border);
+  border-radius: var(--ev-radius-card);
+}
+.section-alt .card { background-color: var(--ev-surface-2); }
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ev-space-4);
+}
+/* Non-interactive icons are never clay (guideline 7). */
+.card-icon { display: block; color: var(--ev-text-muted); }
+.card-icon svg { display: block; width: 1.25rem; height: 1.25rem; }
+
+.card-step {
+  font-family: var(--ev-mono);
+  font-size: 0.75rem;
+  color: var(--ev-text-faint);
+}
+
+.card-title {
+  margin-top: var(--ev-space-6);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.card-lede {
+  margin-top: var(--ev-space-2);
+  font-size: 0.875rem;
+  color: var(--ev-text-muted);
+}
+.card-list {
+  margin-top: var(--ev-space-6);
+  padding-top: var(--ev-space-6);
+  border-top: 0.5px solid var(--ev-border);
+  display: grid;
+  gap: var(--ev-space-4);
+  font-size: 0.875rem;
+  color: var(--ev-text-muted);
+}
+.card-list li { position: relative; padding-left: var(--ev-space-6); }
+.card-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 0.5px;
+  background-color: var(--ev-border-strong);
+}
+
+/* ---------- mid-page CTA ---------- */
+.mid-cta {
+  margin-top: var(--ev-space-20);
+  padding-top: var(--ev-space-12);
+  border-top: 0.5px solid var(--ev-border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ev-space-6);
+}
+.mid-cta p { font-size: 1.25rem; color: var(--ev-text-muted); }
+
+/* =====================================================================
+   TESTIMONIALS
+   ===================================================================== */
+.quote-card { display: flex; flex-direction: column; }
+.quote-mark { display: block; color: var(--ev-text-faint); }
+.quote-mark svg { display: block; width: 1.5rem; height: 1.5rem; }
+
+.quote-card blockquote {
+  margin-top: var(--ev-space-6);
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--ev-text);
+}
+.quote-card blockquote p + p { margin-top: var(--ev-space-4); }
+.quote-card figcaption {
+  margin-top: var(--ev-space-6);
+  padding-top: var(--ev-space-4);
+  border-top: 0.5px solid var(--ev-border);
+  display: grid;
+  gap: 0.15rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+.quote-name { color: var(--ev-text); font-weight: 500; }
+.quote-role { color: var(--ev-text-muted); }
+/* Muted, not faint. This is social proof a reader should be able to read,
+   so it does not qualify for the metadata exception in guideline 2. */
+.quote-meta { font-family: var(--ev-mono); color: var(--ev-text-muted); }
+
+/* =====================================================================
+   SERVICES
+   ===================================================================== */
+.services {
+  margin-top: var(--ev-space-12);
+  display: grid;
+  gap: var(--ev-space-6);
+  align-items: start;
+}
+@media (min-width: 620px) { .services { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 940px) { .services { grid-template-columns: repeat(3, 1fr); } }
+
+.service {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--ev-space-6);
+  background-color: var(--ev-surface);
+  border: 0.5px solid var(--ev-border);
+  border-radius: var(--ev-radius-card);
+  transition: border-color var(--ev-dur) var(--ev-ease);
+}
+.service:hover { border-color: var(--ev-border-strong); }
+
+.service-name { font-size: 1.25rem; font-weight: 500; }
+.service-desc {
+  margin-top: var(--ev-space-3);
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--ev-text-muted);
+}
+
+/* Tag pills are labels, not links, so they stay neutral. Clay is reserved for
+   things you click and things you want counted (guideline 7). */
+.service-tags {
+  margin-top: var(--ev-space-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ev-space-2);
+}
+.service-tags li {
+  padding: 0.25rem 0.6rem;
+  background-color: var(--ev-surface-2);
+  border: 0.5px solid var(--ev-border);
+  border-radius: var(--ev-radius-pill);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--ev-text-muted);
+  white-space: nowrap;
+}
+
+/* =====================================================================
+   CLOSING CTA
+   ===================================================================== */
+.closing { border-top: 0.5px solid var(--ev-border); }
+
+/* Text left, action right on desktop. Left aligned like every other section:
+   never give .closing-inner margin-inline: auto, it centres against the page. */
+.closing-inner {
+  display: grid;
+  gap: var(--ev-space-8);
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .closing-inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--ev-space-20);
+  }
+}
+.closing-copy { max-width: 52ch; }
+.closing-title { font-size: 1.8125rem; font-weight: 500; letter-spacing: -0.01em; }
+.closing-lead {
+  margin-top: var(--ev-space-4);
+  font-size: 1.25rem;
+  color: var(--ev-text-muted);
+}
+.closing .btn { justify-self: start; }
+
+/* Services page: no hero above it, so it needs its own top breathing room. */
+.section-first { padding-top: var(--ev-space-20); }
+@media (min-width: 720px) { .section-first { padding-top: var(--ev-space-32); } }
+
+.site-nav a[aria-current="page"] { color: var(--ev-text); }
+
+/* Mobile header. The nav links collapse into the footer nav below 720px, so the
+   header keeps the brand and the booking action. Both fit at 320px once the
+   header CTA is the short "Book a free call" label: the lockup and the button
+   step down a size together. The mark stays at 1.6em of 0.8125rem = 21px, above
+   the 20px floor guideline 8 sets for the mark. */
+@media (max-width: 559px) {
+  .header-inner { gap: var(--ev-space-3); min-height: 60px; }
+  .brand { font-size: 0.8125rem; gap: 0.55em; }
+  .brand-mark { width: 1.6em; height: 1.6em; }
+  .header-cta { padding: 9px 14px; font-size: 0.8125rem; }
+}
+
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+.site-footer {
+  border-top: 0.5px solid var(--ev-border);
+  padding-block: var(--ev-space-12);
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ev-space-6);
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ev-space-6);
+  font-size: 0.8125rem;
+  color: var(--ev-text-muted);
+}
+.footer-links a { transition: color var(--ev-dur) var(--ev-ease); }
+.footer-links a:hover { color: var(--ev-text); }
+/* --ev-text-faint is for fine print only, never a paragraph (guideline 2). */
+.footer-fine { font-size: 0.75rem; color: var(--ev-text-faint); }
+
+/* =====================================================================
+   MOTION — guideline section 10
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  /* The source component animates unconditionally. Guideline 12 requires this
+     opt-out, so the paths hold still instead of snapping to a 0.01ms loop. */
+  .hero-paths path { animation: none !important; opacity: 0.5; }
+}

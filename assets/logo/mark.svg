@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="edithverse">
+  <!-- Banded sphere. 7 bands at 10.6% of diameter each, 6 gaps at 4.3%.
+       Bands stay above the 8% floor so the mark survives at 20px. -->
+  <mask id="evBands">
+    <rect width="100" height="100" fill="#000"/>
+    <g fill="#fff">
+      <rect y="0"    width="100" height="10.6"/>
+      <rect y="14.9" width="100" height="10.6"/>
+      <rect y="29.8" width="100" height="10.6"/>
+      <rect y="44.7" width="100" height="10.6"/>
+      <rect y="59.6" width="100" height="10.6"/>
+      <rect y="74.5" width="100" height="10.6"/>
+      <rect y="89.4" width="100" height="10.6"/>
+    </g>
+  </mask>
+  <circle cx="50" cy="50" r="50" fill="currentColor" mask="url(#evBands)"/>
+</svg>
