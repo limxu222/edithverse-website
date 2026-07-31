@@ -14,8 +14,6 @@ Static HTML and CSS. No build step, no dependencies, no framework.
 | `script.js` | Progressive enhancement only: nav section highlighting |
 | `assets/logo/` | Logo lockups as SVG: mark, horizontal, stacked, favicon |
 | `reference/` | Source reference for the hero background, not served |
-| `CNAME` | Custom domain for GitHub Pages |
-| `.nojekyll` | Skips Jekyll processing |
 
 ## Run locally
 
@@ -27,7 +25,16 @@ Then open http://localhost:8080
 
 ## Deploying
 
-Pushes to `main` publish automatically via GitHub Pages.
+**This repository is the source of truth for the site.** Pushes to `main` deploy
+automatically via Vercel, which serves `edithverse.com`.
+
+The domain is registered at Namecheap and its DNS points at Vercel: an `A` record
+on the apex and a `CNAME` on `www`. The apex 308-redirects to `www`. TLS is issued
+by Let's Encrypt and renewed by Vercel.
+
+GitHub Pages was the original target and is switched off. There is deliberately no
+`CNAME` or `.nojekyll` file — those are Pages-only, and leaving them behind invites
+a second deployment target claiming the same domain.
 
 The stylesheet is linked with a cache-busting query (`styles.css?v=...`). **Bump
 that suffix in both HTML files whenever you edit `styles.css`**, or browsers will
