@@ -16,14 +16,41 @@ LifeOS, same voice. Respond when addressed as Iris.
 
 | When the task involves… | Go to |
 |---|---|
-| **Any change at all** | `C:\Users\USER\LifeOS\projects\websites\edithverse.md` — the build log. Read it first, every time |
-| Anything visual: colour, type, spacing, motion, logo | `C:\Users\USER\LifeOS\brand-assets\logo\edithverse-brand-guidelines-clay.md` — **binding**, overrides your defaults and any reference site |
+| **Any change at all** | `LifeOS\projects\websites\edithverse.md` — the build log. Read it first, every time |
 | A claim about Chris, his clients, or his results | The Brain vault (`Chris's Brain/index.md`), or ask him. Never your own invention |
-| A testimonial's wording | `C:\Users\USER\LifeOS\brand-assets\testimonials\` — the screenshots are the source. Check character by character |
+| Anything brand: colour, type, spacing, motion, logo, client proof | **`LifeOS\brand-assets\`** — see below |
 
-This repository is the **source of truth** for the site. There is no second copy;
-the old duplicate under LifeOS was removed on 2026-08-01 precisely so the two
-could not drift. Do not create one.
+All paths are relative to `C:\Users\USER\`.
+
+### Brand assets
+
+**`C:\Users\USER\LifeOS\brand-assets\`** holds everything that represents the
+business externally. You have read access to all of it — use it rather than
+asking Chris to re-send a file, and rather than approximating something you
+can't find.
+
+| Path | What it is |
+|---|---|
+| `brand-assets\README.md` | What the folder is for and how it's meant to grow |
+| `brand-assets\logo\edithverse-brand-guidelines-clay.md` | **The binding brand spec.** Overrides your defaults and any reference site |
+| `brand-assets\logo\` | The logo source artwork. The site's SVG lockups were traced from it |
+| `brand-assets\testimonials\` | Client review screenshots — **the source of truth for quote wording** |
+
+Rules for using them:
+
+- **The guideline is binding.** Where it and a reference site disagree, it wins.
+- **Testimonial wording comes from the screenshots, character by character.** Never
+  from memory, another page, or your own reconstruction. If a quote is cut off in
+  the screenshot, it stays cut off.
+- **The logo is not to be redrawn from description.** Work from the artwork.
+- The folder is Chris's to organise. **Read from it; don't reorganise or write to
+  it** as a side effect of website work.
+
+### Source of truth
+
+This repository is the source of truth for the site. There is no second copy; the
+old duplicate under LifeOS was removed on 2026-08-01 precisely so the two could
+not drift. Do not create one.
 
 ## Hard rules
 
@@ -78,19 +105,41 @@ test browser** — it only showed on Chris's laptop. They are listed and explain
 in the build log. Removing any of them without retesting on his machine is how
 the hero disappears again.
 
-### 5. Verify in a real browser, then report
+### 5. Screenshot every visual change, then clean up after yourself
 
-Never report a visual change as done because the code looks right. Screenshot it,
-measure it, then report. Never report "I've written it" untested.
+**Any change that alters what the page looks like gets verified by screenshot
+before you report it.** Not by reading the diff, not by asserting the CSS is
+correct, not by a script that returns numbers. Load the page in a real browser,
+capture it, and look at the image. Never report "I've written it" untested.
+
+The loop, every time:
+
+1. Make the change
+2. Load the affected page(s) in a browser and **screenshot** them
+3. **Look at the screenshot.** If it doesn't show what you expected, you are not
+   done — and a browser serving a cached stylesheet is the usual reason
+4. Only then report, and say what you saw
+
+**Screenshots are disposable.** They pile up fast at multiple widths across two
+pages, and they are worthless once the change is verified.
+
+- Write them to a **gitignored scratch directory, never the repo root** — they
+  must never reach a commit or the live site
+- **Delete them once the change is verified and reported.** Don't leave a
+  session's worth of images behind
+- Superseded shots go immediately: if you re-screenshot after a fix, the previous
+  one is dead weight. Keep only what you are currently reasoning about
+- If you need one to survive — a genuine before/after worth keeping — say so and
+  let Chris decide where it belongs. Default is delete
 
 **Your measuring scripts have been confidently wrong here more than once** — a
-page-scanning scan that silently re-measured the same viewport, and a contrast
-check that sampled a lucky animation frame. Both produced clean passes that were
-meaningless. The build log records what went wrong and how to set the scan up so
-it doesn't recur; read it before writing a new audit script rather than
-rediscovering the same traps.
+page scan that silently re-measured the same viewport, and a contrast check that
+sampled a lucky animation frame. Both produced clean passes that were meaningless.
+The build log records what went wrong and how to set a scan up so it doesn't
+recur; read it before writing a new audit script rather than rediscovering the
+same traps.
 
-If a measurement contradicts a screenshot, the screenshot is right and your
+**If a measurement contradicts a screenshot, the screenshot is right** and your
 measurement is stale. Re-check before reporting.
 
 ### 6. Never diagnose a deployment from this laptop's DNS
@@ -133,9 +182,11 @@ there is no Namecheap API key on file, and you cannot reach his account.
 
 - [ ] Changed CSS? Cache-bust bumped in **both** HTML files, to the same value
 - [ ] Changed the header or footer? Applied to **both** pages
-- [ ] Rendered at desktop width and at the guideline's minimum width, both pages,
-      and actually looked at it
+- [ ] **Screenshotted** at desktop width and at the guideline's minimum width,
+      both pages, and actually looked at the images
 - [ ] Accent count still within the guideline's cap in every viewport you touched
-- [ ] Every new claim traceable to the vault or to Chris
+- [ ] Every new claim traceable to the brand assets, the vault, or Chris
 - [ ] Every new `href` goes somewhere real — no `#` placeholders
 - [ ] Pushed, then confirmed live with a real request past local DNS
+- [ ] **Screenshots deleted.** Nothing left in the scratch directory, nothing
+      untracked sitting in the repo

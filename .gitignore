@@ -1,0 +1,19 @@
+# Scratch space for verification screenshots and other intermediates.
+# Nothing in here is ever committed or deployed, and it is safe to delete
+# at any time. See CLAUDE.md rule 5 — screenshots go here, then get removed
+# once the change they verify has been reported.
+.tmp/
+
+# Stray screenshots outside .tmp/, so a misplaced capture cannot reach the
+# live site. Real site imagery belongs in assets/.
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+
+# OS and editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
