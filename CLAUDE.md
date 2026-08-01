@@ -24,27 +24,27 @@ All paths are relative to `C:\Users\USER\`.
 
 ### Brand assets
 
-**`C:\Users\USER\LifeOS\brand-assets\`** holds everything that represents the
-business externally. You have read access to all of it — use it rather than
-asking Chris to re-send a file, and rather than approximating something you
-can't find.
+**Everything brand-related lives in `LifeOS\brand-assets\`** — guidelines, logo
+artwork, testimonials, client proof, and whatever Chris adds next. There is no
+brand material anywhere else, and none of it belongs in this repo beyond the
+built `assets/`.
 
-| Path | What it is |
-|---|---|
-| `brand-assets\README.md` | What the folder is for and how it's meant to grow |
-| `brand-assets\logo\edithverse-brand-guidelines-clay.md` | **The binding brand spec.** Overrides your defaults and any reference site |
-| `brand-assets\logo\` | The logo source artwork. The site's SVG lockups were traced from it |
-| `brand-assets\testimonials\` | Client review screenshots — **the source of truth for quote wording** |
+**Go and look before you ask or approximate.** The folder grows: Chris drops files
+in freely, so list it each time rather than working from a remembered inventory —
+including this one. Its own `README.md` says how it is meant to be organised.
 
-Rules for using them:
+Rules for using it:
 
-- **The guideline is binding.** Where it and a reference site disagree, it wins.
-- **Testimonial wording comes from the screenshots, character by character.** Never
-  from memory, another page, or your own reconstruction. If a quote is cut off in
-  the screenshot, it stays cut off.
-- **The logo is not to be redrawn from description.** Work from the artwork.
-- The folder is Chris's to organise. **Read from it; don't reorganise or write to
-  it** as a side effect of website work.
+- **The brand guideline is binding.** It overrides your defaults and any reference
+  site. Take every value from it directly, never from a copy or from memory.
+- **Testimonial wording comes from the review screenshots, character by
+  character.** Never from memory, another page, or your own reconstruction. If a
+  quote is cut off in the screenshot, it stays cut off.
+- **Logos are not redrawn from description.** Work from the artwork that's there.
+- If something you need genuinely isn't in the folder, **say it's missing and ask.**
+  Do not invent a stand-in — see rule 1.
+- The folder is Chris's to organise. **Read from it; never write to it, rename in
+  it, or reorganise it** as a side effect of website work.
 
 ### Source of truth
 
