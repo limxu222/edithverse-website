@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260801a">
+<link rel="stylesheet" href="styles.css?v=20260801b">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 </head>
 <body>
@@ -200,6 +200,13 @@
 
   <!-- ============ TESTIMONIALS ============ -->
   <section class="section section-alt" id="testimonials">
+    <!-- Star drawn once as a symbol, referenced five times per card. Geometry is
+         a plain 5-point star: outer radius 10, inner 3.82, on a 24 grid. -->
+    <svg class="ev-sprite" aria-hidden="true" focusable="false">
+      <symbol id="ev-star" viewBox="0 0 24 24">
+        <path d="M12.00 2.00 L14.25 8.91 L21.51 8.91 L15.63 13.18 L17.88 20.09 L12.00 15.82 L6.12 20.09 L8.37 13.18 L2.49 8.91 L9.75 8.91 Z"/>
+      </symbol>
+    </svg>
     <div class="container">
       <p class="eyebrow">Testimonials</p>
       <h2 class="section-title">What clients say</h2>
@@ -225,7 +232,14 @@
           <figcaption>
             <span class="quote-name">Asa L.</span>
             <span class="quote-role">Global Program Manager, TikTok. Ex Apple</span>
-            <span class="quote-meta">5.0 verified review</span>
+            <span class="quote-stars" role="img" aria-label="Rated 5 out of 5">
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+            </span>
+            <span class="quote-meta">Verified review</span>
           </figcaption>
         </figure>
 
@@ -251,7 +265,14 @@
           <figcaption>
             <span class="quote-name">Abu Nabe</span>
             <span class="quote-role">Founder and CEO, FalconMVP</span>
-            <span class="quote-meta">5.0 verified review</span>
+            <span class="quote-stars" role="img" aria-label="Rated 5 out of 5">
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+            </span>
+            <span class="quote-meta">Verified review</span>
           </figcaption>
         </figure>
 
@@ -271,8 +292,15 @@
           </blockquote>
           <figcaption>
             <span class="quote-name">Quentin Norris</span>
-            <span class="quote-name">CEO, Qcorp</span>
-            <span class="quote-meta">5.0 verified review</span>
+            <span class="quote-role">CEO, Qcorp</span>
+            <span class="quote-stars" role="img" aria-label="Rated 5 out of 5">
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+              <svg aria-hidden="true"><use href="#ev-star"/></svg>
+            </span>
+            <span class="quote-meta">Verified review</span>
           </figcaption>
         </figure>
       </div>

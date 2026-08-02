@@ -470,6 +470,28 @@ button { font: inherit; color: inherit; background: none; cursor: pointer; }
    so it does not qualify for the metadata exception in guideline 2. */
 .quote-meta { font-family: var(--ev-mono); color: var(--ev-text-muted); }
 
+/* Star rating, sitting between the client's role and "Verified review".
+   The sprite holds the geometry; these are the five references to it. */
+.ev-sprite { display: none; }
+
+.quote-stars {
+  display: flex;
+  justify-self: start;
+  gap: 0.15em;
+  margin-block: 0.35rem 0.15rem;
+  /* --ev-text, deliberately NOT clay. Three cards x five stars is fifteen
+     marks in one viewport; guideline 7 caps clay at three. Gold is not in
+     the palette at all, and would need a gradient the guideline bans. */
+  color: var(--ev-text);
+}
+
+.quote-stars svg {
+  flex: none;
+  width: 0.875rem;
+  height: 0.875rem;
+  fill: currentColor;
+}
+
 /* =====================================================================
    SERVICES
    ===================================================================== */
